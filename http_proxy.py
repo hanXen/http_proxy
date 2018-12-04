@@ -58,10 +58,10 @@ def start_proxy(server_socket):
     
 	except KeyboardInterrupt:
 		print("\n--- Server Closed ---")
-		list_lock.release()
+		list_lock.acquire()
 		for client in clients_list:
 			client.close()
-		list_lock.acquire()
+		list_lock.release()
 		server_socket.close()
 		sys.exit(1)
 
