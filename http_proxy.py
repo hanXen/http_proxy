@@ -35,7 +35,6 @@ def lis_client(client_socket):
 			th.start()
 		except:
 			break
-
 	try:
 		send_socket.close()
 	except:
@@ -55,7 +54,6 @@ def start_proxy(server_socket):
 			t = threading.Thread(target = lis_client, args = (client_socket,))
 			t.daemon = True
 			t.start()
-    
 	except KeyboardInterrupt:
 		print("\n--- Server Closed ---")
 		list_lock.acquire()
@@ -80,8 +78,6 @@ def main():
 	server_socket.listen(10)
 	
 	start_proxy(server_socket)
-
-
 
 if __name__ == '__main__':
 	main()
